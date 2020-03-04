@@ -4,7 +4,6 @@ class CartStore {
   items = [];
 
   addItemToCart = item => {
-    console.log("COFFEE IN STORE", item);
     const found = this.items.find(
       _item => _item.drink === item.drink && _item.option === item.option
     );
@@ -27,7 +26,10 @@ class CartStore {
       }
     }
   };
-  checkoutCart = () => (this.items = []);
+  checkoutCart = () => {
+    this.items = [];
+    alert("Happy caffienation");
+  };
 
   totalItems = () => {
     const total = this.items.map(item => item.quantity);

@@ -7,7 +7,7 @@ import { observer } from "mobx-react";
 const CartButton = ({ navigation, item }) => {
   return (
     <Button badge vertical transparent>
-      <Badge>
+      <Badge style={{ backgroundColor: "#rgba(0,0,0,0)" }}>
         <Text>{cartStore.totalItems(item)}</Text>
       </Badge>
       <Icon
