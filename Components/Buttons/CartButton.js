@@ -1,15 +1,23 @@
 import React from "react";
 import { withNavigation } from "react-navigation";
-import { Icon } from "native-base";
+import { Icon, Badge, Button, Text } from "native-base";
+import cartStore from "../../stores/cartStore";
+import { observer } from "mobx-react";
 
-const CartButton = ({ navigation }) => {
+const CartButton = ({ navigation, item }) => {
   return (
-    <Icon
-      name="shoppingcart"
-      type="AntDesign"
-      onPress={() => navigation.navigate("CartScreen")}
-    />
+    <Button badge vertical transparent>
+      <Badge>
+        <Text>{cartStore.totalItems(item)}</Text>
+      </Badge>
+      <Icon
+        name="shoppingcart"
+        type="AntDesign"
+        onPress={() => navigation.navigate("CartScreen")}
+        style={{ color: "white" }}
+      />
+    </Button>
   );
 };
 
-export default withNavigation(CartButton);
+export default withNavigation(observer(CartButton));
